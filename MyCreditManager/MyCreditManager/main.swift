@@ -42,6 +42,10 @@ while true {
         
         if input.count == 0 || gradeArray.count != 3 {
             print ("입력이 잘못되었습니다. 다시 확인해주세요.")
+        } else if inputArray.contains(gradeArray[0]) {
+            gradeArray.insert (gradeArray[2], at: 2)
+            gradeArray.remove(at: 3)
+            print ("\(gradeArray[0]) 학생의 \(gradeArray[1]) 과목이 \(gradeArray[2])로 추가(변경)되었습니다.")
         }
         
     case "4":
