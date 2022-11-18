@@ -16,12 +16,11 @@ while true {
     switch numInput {
     case "1":
         print("추가할 학생의 이름을 입력해주세요.")
-        let addInput = readLine()!
-        if addInput.isEmpty {
+        let student = readLine()!
+        if student.isEmpty {
             print("입력이 잘못되었습니다. 다시 확인해주세요.")
         }
-        !inputArray.contains(addInput) ? inputArray.append(addInput) : print("\(addInput)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
-        print(inputArray)
+        !inputArray.contains(student) ? inputArray.append(student) : print("\(student)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
         
     case "2":
         print("삭제할 학생의 이름을 알려주세요.")
