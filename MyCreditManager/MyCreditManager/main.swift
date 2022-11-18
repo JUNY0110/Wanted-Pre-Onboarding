@@ -24,6 +24,17 @@ while true {
         
     case "2":
         print("삭제할 학생의 이름을 알려주세요.")
+        let student = readLine()!
+        
+        if student.isEmpty {
+            print("입력이 잘못되었습니다. 다시 확인해주세요.")
+        } else if inputArray.contains(student) {
+            inputArray.remove(at: inputArray.firstIndex(of: student)!)
+            print("\(student) 학생을 삭제하였습니다.")
+        } else {
+            print("\(student) 학생을 찾지 못했습니다.")
+        }
+        
     case "3":
         print("성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.\n입력예) Mickey Swift A+\n만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.")
     case "4":
