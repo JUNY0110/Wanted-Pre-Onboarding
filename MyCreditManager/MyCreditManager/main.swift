@@ -16,6 +16,11 @@ while true {
     switch numInput {
     case "1":
         print("추가할 학생의 이름을 입력해주세요.")
+        let addInput = readLine()!
+        if addInput.isEmpty {
+            print("입력이 잘못되었습니다. 다시 확인해주세요.")
+        }
+        
     case "2":
         print("삭제할 학생의 이름을 알려주세요.")
     case "3":
