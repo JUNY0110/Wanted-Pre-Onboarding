@@ -17,8 +17,8 @@ enum Require {
     static let error = "입력이 잘못되었습니다. 다시 확인해주세요."
 }
 
-var inputArray: [String] = []
-var gradeArray: [String] = []
+var dictionary: [String: [String: String]] = [:]
+var gradeArray = Dictionary<String, [String]>()
 
 while true {
     print(Require.mainQuestion)
@@ -28,11 +28,15 @@ while true {
     case "1":
         print(Require.firstQuestion)
         let student = readLine()!
-        
+
         if student.isEmpty {
             print(Require.error)
+        } else if dictionary.keys.contains(student) {
+            print("\(student)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
+        } else {
+            dictionary[student] = [:]
+            print("\(student) 학생을 추가했습니다.")
         }
-        !inputArray.contains(student) ? inputArray.append(student) : print("\(student)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
         
     case "2":
         print(Require.secondQuestion)
@@ -40,8 +44,8 @@ while true {
         
         if student.isEmpty {
             print(Require.error)
-        } else if inputArray.contains(student) {
-            inputArray.remove(at: inputArray.firstIndex(of: student)!)
+        } else if dictionary.keys.contains(student) {
+            dictionary.removeValue(forKey: student)
             print("\(student) 학생을 삭제하였습니다.")
         } else {
             print("\(student) 학생을 찾지 못했습니다.")
@@ -50,21 +54,25 @@ while true {
     case "3":
         print(Require.thirdQuestion)
         let input = readLine()!
-//        var gradeArray = input.split(separator: " ").map { String ($0) }
+        let gradeArray = input.split(separator: " ").map { String ($0) }
         
-        if input.count == 0 || gradeArray.count != 3 {
+        if input.isEmpty || gradeArray.count != 3 {
             print(Require.error)
-        } else if inputArray.contains(gradeArray[0]) {
-            gradeArray.insert(gradeArray[2], at: 2)
-            gradeArray.remove(at: 3)
+        } else if dictionary.keys.contains(gradeArray[0]) {
+            dictionary[gradeArray[0]] = [gradeArray[1]: gradeArray[2]]
             print("\(gradeArray[0]) 학생의 \(gradeArray[1]) 과목이 \(gradeArray[2])로 추가(변경)되었습니다.")
-            print(gradeArray)
         }
         
     case "4":
         print("삭제할 학생의 이름을 알려주세요.")
+        let student = readLine()!
+        
     case "5":
         print("삭제할 학생의 이름을 알려주세요.")
+        let student = readLine()!
+//        print(dictionary.values)
+//        print(dictionary[student])
+//        print()
     case "X":
         print("삭제할 학생의 이름을 알려주세요.")
     default:
