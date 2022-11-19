@@ -1,5 +1,5 @@
 # Wanted-Pre-Onboarding(성적 관리 프로그램)
-원티드 프리온보딩 챌린지 iOS과정
+[원티드 프리온보딩 챌린지 iOS과정](https://yagomacademy.notion.site/iOS-ba2d0c0bb0b949c896cc28567706e969)
 
 ## **프로젝트 이름**
 
