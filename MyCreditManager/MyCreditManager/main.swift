@@ -12,7 +12,7 @@ enum Require {
     static let firstQuestion = "추가할 학생의 이름을 입력해주세요."
     static let secondQuestion = "삭제할 학생의 이름을 알려주세요."
     static let thirdQuestion = "성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요. \n입력예) Mickey Swift A+\n만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다."
-    static let fourthQuestion = ""
+    static let fourthQuestion = "성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.\n입력예) Mickey Swift"
     static let fifthQuestion = ""
     static let error = "입력이 잘못되었습니다. 다시 확인해주세요."
 }
@@ -56,7 +56,7 @@ while true {
         let input = readLine()!
         let gradeArray = input.split(separator: " ").map { String ($0) }
         
-        if input.isEmpty || gradeArray.count != 3 {
+        if gradeArray.count < 3 {
             print(Require.error)
         } else if dictionary.keys.contains(gradeArray[0]) {
             dictionary[gradeArray[0]] = [gradeArray[1]: gradeArray[2]]
@@ -64,15 +64,24 @@ while true {
         }
         
     case "4":
-        print("삭제할 학생의 이름을 알려주세요.")
-        let student = readLine()!
+        print(Require.fourthQuestion)
+        let input = readLine()!
+        let inputArray = input.split(separator: " ").map{ String($0) }
+        let dictValues = dictionary.values
+        
+        if inputArray.count < 2 {
+            print(Require.error)
+        } else if !dictionary.keys.contains(inputArray[0]) {
+            print("\(inputArray[0]) 학생을 찾지 못했습니다.")
+        } else {
+            dictionary[inputArray[0]]?.removeValue(forKey: inputArray[1])
+            print("\(inputArray[0]) 학생의 \(inputArray[1]) 과목의 성적이 삭제되었습니다.")
+            print(dictionary)
+        }
         
     case "5":
         print("삭제할 학생의 이름을 알려주세요.")
         let student = readLine()!
-//        print(dictionary.values)
-//        print(dictionary[student])
-//        print()
     case "X":
         print("삭제할 학생의 이름을 알려주세요.")
     default:
