@@ -7,35 +7,45 @@
 
 import Foundation
 
-enum Require {
-    static let mainQuestion = "원하는 기능을 입력해주세요\n1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료"
-    static let firstQuestion = "추가할 학생의 이름을 입력해주세요."
-    static let secondQuestion = "삭제할 학생의 이름을 알려주세요."
-    static let thirdQuestion = "성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요. \n입력예) Mickey Swift A+\n만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다."
-    static let fourthQuestion = "성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.\n입력예) Mickey Swift"
-    static let fifthQuestion = "평점을 알고싶은 학생의 이름을 입력해주세요."
-    static let sixthAnswer = "프로그램을 종료합니다..."
-    static let error = "입력이 잘못되었습니다. 다시 확인해주세요."
+enum systemMessage {
+    static let wantToFunc = """
+                            원하는 기능을 입력해주세요
+                            1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료
+                            """
+    static let addStudent = "추가할 학생의 이름을 입력해주세요."
+    static let deleteStudent = "삭제할 학생의 이름을 입력해주세요."
+    static let addStudentInfo = """
+                                성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
+                                입력예) Mickey Swift A+
+                                만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
+                                """
+    static let deleteStudentInfo = """
+                                    성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.
+                                    입력예) Mickey Swift
+                                    """
+    static let GradesOfStudent = "평점을 알고싶은 학생의 이름을 입력해주세요."
+    static let endingProgram = "프로그램을 종료합니다..."
+    static let needRecheck = "입력이 잘못되었습니다. 다시 확인해주세요."
 }
 
 var dictionary: [String: [String: String]] = [:]
 
 while true {
-    print(Require.mainQuestion)
-    let numInput = readLine()!
+    print(systemMessage.wantToFunc)
+    let selectedFunc = readLine()!
 
-    if numInput == "X" {
-        print(Require.sixthAnswer)
+    if selectedFunc == "X" {
+        print(systemMessage.endingProgram)
         break
     }
     
-    switch numInput {
+    switch selectedFunc {
     case "1":
-        print(Require.firstQuestion)
+        print(systemMessage.addStudent)
         let student = readLine()!
 
         if student.isEmpty {
-            print(Require.error)
+            print(systemMessage.needRecheck)
         } else if dictionary.keys.contains(student) {
             print("\(student)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
         } else {
@@ -44,11 +54,11 @@ while true {
         }
         
     case "2":
-        print(Require.secondQuestion)
+        print(systemMessage.deleteStudent)
         let student = readLine()!
         
         if student.isEmpty {
-            print(Require.error)
+            print(systemMessage.needRecheck)
         } else if dictionary.keys.contains(student) {
             dictionary.removeValue(forKey: student)
             print("\(student) 학생을 삭제하였습니다.")
@@ -57,38 +67,38 @@ while true {
         }
         
     case "3":
-        print(Require.thirdQuestion)
-        let input = readLine()!
-        let gradeArray = input.split(separator: " ").map{ String($0) }
+        print(systemMessage.addStudentInfo)
+        let studentInfo = readLine()!
+        let studentInfoArray = studentInfo.split(separator: " ").map{ String($0) }
         
-        if gradeArray.count != 3 {
-            print(Require.error)
+        if studentInfoArray.count != 3 {
+            print(systemMessage.needRecheck)
         } else {
-            dictionary[gradeArray[0]]?.updateValue(gradeArray[2], forKey: gradeArray[1])
-            print("\(gradeArray[0]) 학생의 \(gradeArray[1]) 과목이 \(gradeArray[2])로 추가(변경)되었습니다.")
+            dictionary[studentInfoArray[0]]?.updateValue(studentInfoArray[2], forKey: studentInfoArray[1])
+            print("\(studentInfoArray[0]) 학생의 \(studentInfoArray[1]) 과목이 \(studentInfoArray[2])로 추가(변경)되었습니다.")
         }
         
     case "4":
-        print(Require.fourthQuestion)
-        let input = readLine()!
-        let inputArray = input.split(separator: " ").map{ String($0) }
+        print(systemMessage.deleteStudentInfo)
+        let studentInfo = readLine()!
+        let studentInfoArray = studentInfo.split(separator: " ").map{ String($0) }
         
-        if inputArray.count != 2 {
-            print(Require.error)
-        } else if !dictionary.keys.contains(inputArray[0]) {
-            print("\(inputArray[0]) 학생을 찾지 못했습니다.")
+        if studentInfoArray.count != 2 {
+            print(systemMessage.needRecheck)
+        } else if !dictionary.keys.contains(studentInfoArray[0]) {
+            print("\(studentInfoArray[0]) 학생을 찾지 못했습니다.")
         } else {
-            dictionary[inputArray[0]]?.removeValue(forKey: inputArray[1])
-            print("\(inputArray[0]) 학생의 \(inputArray[1]) 과목의 성적이 삭제되었습니다.")
+            dictionary[studentInfoArray[0]]?.removeValue(forKey: studentInfoArray[1])
+            print("\(studentInfoArray[0]) 학생의 \(studentInfoArray[1]) 과목의 성적이 삭제되었습니다.")
         }
         
     case "5":
-        print(Require.fifthQuestion)
+        print(systemMessage.GradesOfStudent)
         let student = readLine()!
         var sum = 0.0
         
         if student.isEmpty {
-            print(Require.error)
+            print(systemMessage.needRecheck)
         } else if !dictionary.keys.contains(student) {
             print("\(student) 학생을 찾지 못했습니다.")
         } else {
@@ -113,7 +123,7 @@ while true {
                 case "F":
                     sum += 0.0
                 default:
-                    print(Require.error)
+                    print(systemMessage.needRecheck)
                 }
                 print("\(subject): \(grade)")
             }
