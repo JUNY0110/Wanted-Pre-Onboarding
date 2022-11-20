@@ -1,5 +1,5 @@
 # Wanted-Pre-Onboarding(성적 관리 프로그램)
-원티드 프리온보딩 챌린지 iOS과정
+[원티드 프리온보딩 챌린지 iOS과정](https://yagomacademy.notion.site/iOS-ba2d0c0bb0b949c896cc28567706e969)
 
 ## **프로젝트 이름**
 
@@ -12,31 +12,14 @@
 
 ## **프로그램의 메뉴**
 
-- 학생추가
-- 학생삭제
-- 성적추가(변경)
-- 성적삭제
-- 평점보기
-- 종료
+- [학생추가](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/2)
+- [학생삭제](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/3)
+- [성적추가(변경)](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/4)
+- [성적삭제](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/5)
+- [평점보기](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/6)
+- [종료](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/7)
 
 ## **프로그램 동작조건**
 
 - 사용자가 종료 메뉴를 선택하기 전까지는 계속해서 사용자의 입력을 받습니다
 - 메뉴선택을 포함한 모든 입력은 숫자 또는 영문으로 받습니다
-
-## 성적별 점수
-
-- A+ (4.5점) / A (4점)
-- B+ (3.5점) / B (3점)
-- C+ (2.5점) / C (2점)
-- D+ (1.5점) / D (1점)
-- F (0점)
-
-## 평점
-
-- 각 과목의 점수 총 합 / 과목 수
-- 최대 소수점 2번째 자리까지 출력
-    - 예)
-        - 3.75
-        - 4.1
-        - 2
