@@ -32,7 +32,7 @@ while true {
         deleteGradesOfStudent()
         
     case "5":
-        checkGradeOfStudent()
+        checkGradesOfStudent()
         
     default:
         print(systemMessage.needReEnter)
