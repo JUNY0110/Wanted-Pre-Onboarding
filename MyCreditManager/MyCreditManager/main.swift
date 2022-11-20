@@ -26,10 +26,10 @@ while true {
         deleteStudent()
         
     case "3":
-        addStudentInfo()
+        addGradesOfStudent()
 
     case "4":
-        deleteStudentInfo()
+        deleteGradesOfStudent()
         
     case "5":
         checkGradeOfStudent()

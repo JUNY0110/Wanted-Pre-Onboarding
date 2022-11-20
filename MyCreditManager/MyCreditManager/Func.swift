@@ -36,10 +36,10 @@ func deleteStudent() {
     
 }
 
-func addStudentInfo() {
-    print(systemMessage.addStudentInfo)
-    let studentInfo = readLine()!
-    let studentInfoArray = studentInfo.split(separator: " ").map{ String($0) }
+func addGradesOfStudent() {
+    print(systemMessage.addGradesOfStudent)
+    let GradesOfStudent = readLine()!
+    let studentInfoArray = GradesOfStudent.split(separator: " ").map{ String($0) }
     
     if studentInfoArray.count != 3 {
         print(systemMessage.needRecheck)
@@ -49,8 +49,8 @@ func addStudentInfo() {
     }
 }
 
-func deleteStudentInfo() {
-    print(systemMessage.deleteStudentInfo)
+func deleteGradesOfStudent() {
+    print(systemMessage.deleteGradesOfStudent)
     let studentInfo = readLine()!
     let studentInfoArray = studentInfo.split(separator: " ").map{ String($0) }
     
