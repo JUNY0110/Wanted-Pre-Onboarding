@@ -79,6 +79,41 @@ while true {
     case "5":
         print(Require.fifthQuestion)
         let student = readLine()!
+        var sum = 0.0
+        
+        if student.isEmpty {
+            print(Require.error)
+        } else if !dictionary.keys.contains(student) {
+            print("\(student) 학생을 찾지 못했습니다.")
+        } else {
+            dictionary[student]!.forEach { (subject, grade) in
+                switch grade {
+                case "A+":
+                    sum += 4.5
+                case "A":
+                    sum += 4.0
+                case "B+":
+                    sum += 3.5
+                case "B":
+                    sum += 3.0
+                case "C+":
+                    sum += 2.5
+                case "C":
+                    sum += 2.0
+                case "D+":
+                    sum += 1.5
+                case "D":
+                    sum += 1.0
+                case "F":
+                    sum += 0.0
+                default:
+                    print(Require.error)
+                }
+                print("\(subject): \(grade)")
+            }
+            print("평점: \(round(Float(sum) / Float(dictionary[student]!.count) * 100) / 100)")
+        }
+        
     case "X":
         print("삭제할 학생의 이름을 알려주세요.")
     default:
