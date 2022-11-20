@@ -12,12 +12,12 @@
 
 ## **프로그램의 메뉴**
 
-- 학생추가
-- 학생삭제
-- 성적추가(변경)
-- 성적삭제
-- 평점보기
-- 종료
+- [학생추가](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/2)
+- [학생삭제](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/3)
+- [성적추가(변경)](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/4)
+- [성적삭제](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/5)
+- [평점보기](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/6)
+- [종료](https://github.com/JUNY0110/Wanted-Pre-Onboarding/issues/7)
 
 ## **프로그램 동작조건**
 
